@@ -60,17 +60,6 @@ server.tool("sell-stock",
   }
 );
 
-// server.tool("show-portfolio",
-//   { },
-//   async () => {
-//     return {
-//       content: await getPositions(),
-//     };
-//   }
-// );
-
-
-// Start receiving messages on stdin and sending messages on stdout
 const transport = new StdioServerTransport();
 console.log("Starting MCP server...");
 await server.connect(transport);
