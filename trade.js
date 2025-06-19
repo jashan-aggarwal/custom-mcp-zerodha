@@ -54,17 +54,6 @@ export async function placeOrder(tradingsymbol, quantity, type) {
   };
 };
 
-// export async function getPositions() {
-//     const holdings = await kc.getPositions();
-//     let allHoldings = "";
-//     holdings.map(holding => {
-//         allHoldings += `stock: ${holding.tradingsymbol}, qty: ${holding.quantity}, currentPrice: ${holding.last_price}`;
-//     });
-//     return allHoldings;
-// };
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 async function init() {
   try {
     // await generateSession();
@@ -97,8 +86,3 @@ async function getProfile() {
 
 console.log(kc.getLoginURL());
 init();
-
-    // "kite": {
-    //   "command": "npx",
-    //   "args": ["mcp-remote", "https://mcp.kite.trade/sse"]
-    // }
