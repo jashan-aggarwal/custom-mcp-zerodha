@@ -6,7 +6,6 @@ This is a basic integration of Zerodha's Kite API using custom tools built with 
 
 - Buy stocks using `buy-stock` tool  
 - Sell stocks using `sell-stock` tool  
-- Handles basic error cases like market timing, invalid symbols, and margin issues  
 - Uses `dotenv` for secure environment configuration  
 - Designed to work with Claude or other MCP-compatible agents  
 
