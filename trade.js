@@ -84,5 +84,4 @@ async function getProfile() {
   }
 }
 
-console.log(kc.getLoginURL());
-init();
+console.error(kc.getLoginURL());
