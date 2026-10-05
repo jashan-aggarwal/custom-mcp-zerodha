@@ -11,13 +11,14 @@ const server = new McpServer({
 });
 
 server.tool("buy-stock",
-  { stock: z.string(), qty: z.number() },
+  { stock: z.string().trim().min(1), qty: z.number().int().positive().max(10) },
   async ({ stock, qty }) => {
-    console.log(`Claude requested BUY: ${stock} x ${qty}`);
+    console.error(`Claude requested BUY: ${stock} x ${qty}`);
     const result = await placeOrder(stock, qty, "BUY");
 
     if (!result.success) {
       return {
+        isError: true,
         content: [
           {
             type: "text",
@@ -27,7 +28,7 @@ server.tool("buy-stock",
       };
     }
 
-    console.log(result.content);
+    console.error(result.content);
 
     return {
       content: result.content
@@ -36,13 +37,14 @@ server.tool("buy-stock",
 );
 
 server.tool("sell-stock",
-  { stock: z.string(), qty: z.number() },
+  { stock: z.string().trim().min(1), qty: z.number().int().positive().max(10) },
   async ({ stock, qty }) => {
-    console.log(`Claude requested SELL: ${stock} x ${qty}`);
+    console.error(`Claude requested SELL: ${stock} x ${qty}`);
     const result = await placeOrder(stock, qty, "SELL");
 
     if (!result.success) {
       return {
+        isError: true,
         content: [
           {
             type: "text",
@@ -52,7 +54,7 @@ server.tool("sell-stock",
       };
     }
 
-    console.log(result.content);
+    console.error(result.content);
 
     return {
       content: result.content
@@ -61,6 +63,6 @@ server.tool("sell-stock",
 );
 
 const transport = new StdioServerTransport();
-console.log("Starting MCP server...");
+console.error("Starting MCP server...");
 await server.connect(transport);
-console.log("MCP Server connected to Claude.");
+console.error("MCP Server connected to Claude.");
